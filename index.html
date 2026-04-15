@@ -9,7 +9,7 @@
     <style>
         body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
         
-        /* HEADER: Dominan Merah Putih & Efek Neon Cepat */
+        /* HEADER */
         .header-box { 
             background: linear-gradient(135deg, #cc0000 0%, #ff4444 100%); 
             color: white; padding: 40px 15px 30px; border-bottom-right-radius: 50px; 
@@ -18,29 +18,18 @@
         }
         
         .neon-border {
-            display: inline-block;
-            padding: 10px 25px;
-            position: relative;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            overflow: hidden;
+            display: inline-block; padding: 10px 25px; position: relative;
+            border-radius: 12px; background: rgba(255, 255, 255, 0.1); overflow: hidden;
         }
 
-        /* Garis Neon Berputar CEPAT & MULUS */
         .neon-border::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
             background: conic-gradient(transparent, transparent, transparent, #ffffff);
             animation: rotateNeon 1.5s linear infinite;
         }
         .neon-border::after {
-            content: '';
-            position: absolute;
-            inset: 3px;
-            background: #cc0000;
-            border-radius: 10px;
-            z-index: 1;
+            content: ''; position: absolute; inset: 3px; background: #cc0000;
+            border-radius: 10px; z-index: 1;
         }
 
         @keyframes rotateNeon {
@@ -48,41 +37,20 @@
             100% { transform: rotate(360deg); }
         }
 
-        .header-title {
-            font-size: 1.8rem; font-weight: 800; letter-spacing: 1px;
-            position: relative; z-index: 2; margin: 0;
-        }
-        
-        .header-subtitle { 
-            font-size: 1.2rem; 
-            margin-top: -5px; 
-            font-weight: 700; 
-            color: #ffffff; 
-            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-        }
+        .header-title { font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; position: relative; z-index: 2; margin: 0; }
+        .header-subtitle { font-size: 1.2rem; margin-top: -5px; font-weight: 700; color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.2); }
 
-        /* Tombol Kembali Atas */
         .btn-kembali-atas {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid white;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-top: 10px;
-            display: inline-block;
-            text-decoration: none;
-            transition: 0.3s;
-            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2); border: 1px solid white; color: white;
+            padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold;
+            margin-top: 10px; display: inline-block; text-decoration: none; cursor: pointer;
         }
 
-        /* DASHBOARD MENU */
+        /* MENU DASHBOARD */
         .card-menu { 
             border: none; border-radius: 25px; transition: 0.3s; cursor: pointer; 
             height: 190px; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08); padding: 15px; background: white;
-            border: 2px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); padding: 15px; background: white; border: 2px solid #eee;
         }
         .card-menu:active { transform: scale(0.95); }
         .card-honda { border-bottom: 5px solid #cc0000; }
@@ -93,10 +61,7 @@
             font-size: 40px; display: flex; align-items: center; justify-content: center;
             margin-bottom: 10px; animation: iconPulse 2s ease-in-out infinite;
         }
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
+        @keyframes iconPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
         .menu-title { font-size: 1.1rem; font-weight: 800; white-space: nowrap; margin-bottom: 2px; }
         .text-merah { color: #cc0000; }
@@ -107,10 +72,9 @@
         @keyframes blinker { 50% { opacity: 0; } }
         @keyframes moveUpDown { 50% { transform: translateY(-3px); } }
 
-        /* KOTAK INFORMASI */
         .info-box { background: white; border-radius: 20px; border-left: 5px solid #cc0000; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
-        /* Form Area */
+        /* FORM */
         .section-title { font-size: 0.75rem; color: #cc0000; font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 15px; margin-bottom: 10px; }
         .form-label { font-size: 0.85rem; font-weight: bold; color: #444; }
         .btn-kirim { background: #25d366; color: white; border: none; padding: 15px; border-radius: 12px; font-weight: bold; font-size: 1.1rem; }
@@ -149,13 +113,12 @@
                     <div class="click-guide">Klik di Sini</div>
                 </div>
             </div>
-
             <div class="col-12 mt-4">
                 <div class="info-box p-4">
                     <h6 class="fw-bold mb-3">Kenapa Memilih Kami?</h6>
                     <ul class="small text-muted ps-3 mb-0">
                         <li class="mb-2">Proses cepat, mudah, dan transparan.</li>
-                        <li class="mb-2">Bekerja sama dengan dealer dan finance resmi.</li>
+                        <li class="mb-2">Bekerja sama dengan dealer dan finance pembiayaan resmi.</li>
                         <li class="mb-2">Syarat ringan dan data dibantu sampai ACC.</li>
                         <li>Asli domisili dan melayani seluruh area Kebumen.</li>
                     </ul>
@@ -214,7 +177,6 @@
     <script>
         let jenisLayanan = "";
 
-        // Fungsi saat buka form
         function bukaForm(layanan) {
             jenisLayanan = layanan;
             document.getElementById('menu-utama').classList.add('d-none');
@@ -230,27 +192,18 @@
                 document.getElementById('form-unit-baru').classList.add('d-none');
                 document.getElementById('form-gadai').classList.remove('d-none');
             }
-            
-            // Tambahkan history baru agar tombol back HP tidak menutup aplikasi
             history.pushState({page: "form"}, "Form", "#form");
             window.scrollTo(0,0);
         }
 
-        // Fungsi saat kembali ke menu utama
         function kembaliKeMenu() {
             document.getElementById('menu-utama').classList.remove('d-none');
             document.getElementById('area-form').classList.add('d-none');
             document.getElementById('btn-atas').classList.add('d-none');
-            
-            // Jika user klik tombol kembali manual, bersihkan history
-            if(window.location.hash === "#form") {
-                history.back();
-            }
+            if(window.location.hash === "#form") { history.back(); }
         }
 
-        // Deteksi tombol BACK pada Handphone
         window.onpopstate = function(event) {
-            // Jika user menekan tombol back HP dan form sedang terbuka, maka tutup form saja
             document.getElementById('menu-utama').classList.remove('d-none');
             document.getElementById('area-form').classList.add('d-none');
             document.getElementById('btn-atas').classList.add('d-none');
@@ -258,23 +211,38 @@
 
         function kirimWA() {
             const nama = document.getElementById('nama').value;
+            const pekerjaan = document.getElementById('pekerjaan').value;
+            const rt = document.getElementById('rt').value;
+            const rw = document.getElementById('rw').value;
             const desa = document.getElementById('desa').value;
             const kec = document.getElementById('kecamatan').value;
-            if(nama === "" || desa === "" || kec === "") { alert("Mohon isi data dengan lengkap."); return; }
+            const kab = document.getElementById('kabupaten').value;
+
+            if(nama === "" || desa === "" || kec === "") { 
+                alert("Mohon isi nama dan alamat dengan lengkap."); 
+                return; 
+            }
             
             const nomorAdmin = "6282157578668"; 
-            let dataUnit = "";
+            let detailKendaraan = "";
+            let introPesan = "";
+
             if(jenisLayanan === 'Unit Baru Honda') {
-                dataUnit = `%0A*UNIT:* ${document.getElementById('unit_tipe').value} (${document.getElementById('unit_warna').value})`;
+                introPesan = "Saya ingin mengajukan *Unit Baru Honda*";
+                const tipe = document.getElementById('unit_tipe').value;
+                const warna = document.getElementById('unit_warna').value;
+                detailKendaraan = `%0A%0A*UNIT:*%0A🏍️ Type Motor Honda: ${tipe}%0A🎨 Warna: ${warna}`;
             } else {
+                introPesan = "Saya ingin mengajukan *Gadai BPKB*";
                 const tipeGadai = document.getElementById('gadai_tipe').value;
                 const platGadai = document.getElementById('gadai_plat').value;
                 const tahunGadai = document.getElementById('gadai_tahun').value;
                 const pajakGadai = document.getElementById('gadai_pajak').value;
-                
-                dataUnit = `%0A*GADAI:* ${tipeGadai}%0A*PLAT:* ${platGadai}%0A*THN:* ${tahunGadai}%0A*PAJAK:* ${pajakGadai}`;
+                detailKendaraan = `%0A%0A*KENDARAAN:*%0A🚗 Merk/Tipe: ${tipeGadai}%0A🔢 Plat Nomor: ${platGadai}%0A📅 Tahun: ${tahunGadai}%0A🚦 Pajak: ${pajakGadai}`;
             }
-            const pesan = `Halo Solusi Otomotif,%0A%0ASaya mau ajukan *${jenisLayanan}*%0A%0A*DATA:*%0A👤 ${nama}%0A🏠 Desa ${desa}, Kec. ${kec}${dataUnit}`;
+
+            const pesan = `Halo Solusi Otomotif,%0A%0A${introPesan}%0A%0A*DATA KONSUMEN:*%0A👤 Nama Lengkap: ${nama}%0A💼 Pekerjaan: ${pekerjaan}%0A🏠 Domisili: RT ${rt} / RW ${rw}, Desa ${desa}, Kec. ${kec}, Kab. ${kab}${detailKendaraan}%0A%0AMohon segera direspon.%0ATerima kasih 🙏.`;
+            
             window.open(`https://wa.me/${nomorAdmin}?text=${pesan}`, '_blank');
         }
     </script>
