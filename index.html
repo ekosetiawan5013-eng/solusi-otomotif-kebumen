@@ -5,52 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solusi Otomotif Kebumen</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
-        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
+        
+        /* HEADER: Dominan Merah Putih & Efek Neon Cepat */
         .header-box { 
             background: linear-gradient(135deg, #cc0000 0%, #ff4444 100%); 
-            color: white; padding: 35px 20px; border-bottom-right-radius: 50px; 
+            color: white; padding: 40px 15px 30px; border-bottom-right-radius: 50px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative; text-align: center;
         }
-        .card-menu { border: none; border-radius: 20px; transition: 0.3s; cursor: pointer; background: white; }
+        
+        .neon-border {
+            display: inline-block;
+            padding: 10px 25px;
+            position: relative;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        /* Garis Neon Berputar CEPAT & MULUS (No Delay) */
+        .neon-border::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, #ffffff);
+            animation: rotateNeon 1.5s linear infinite; /* Dipercepat & Mulus */
+        }
+        .neon-border::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            background: #cc0000;
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        @keyframes rotateNeon {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-title {
+            font-size: 1.8rem; font-weight: 800; letter-spacing: 1px;
+            position: relative; z-index: 2; margin: 0;
+        }
+        
+        /* Subtitle Diperbesar & Digeser ke Atas */
+        .header-subtitle { 
+            font-size: 1.2rem; /* Diperbesar sedikit */
+            margin-top: -5px; /* Digeser ke atas, menempel ke kotak */
+            font-weight: 700; 
+            color: #ffffff; 
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* DASHBOARD MENU */
+        .card-menu { 
+            border: none; border-radius: 25px; transition: 0.3s; cursor: pointer; 
+            height: 190px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); padding: 15px; background: white;
+            border: 2px solid #eee;
+        }
         .card-menu:active { transform: scale(0.95); }
+        .card-honda { border-bottom: 5px solid #cc0000; }
+        .card-bpkb { border-bottom: 5px solid #0056b3; }
+
+        /* Ikon Pulse */
         .icon-circle { 
-            width: 70px; height: 70px; background: #fff5f5; border-radius: 50%; 
-            margin: 0 auto 15px; font-size: 35px; display: flex; align-items: center; justify-content: center;
+            width: 80px; height: 80px; background: #fff5f5; border-radius: 50%; 
+            font-size: 40px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 10px; animation: iconPulse 2s ease-in-out infinite;
         }
-        .form-label { font-size: 0.85rem; font-weight: bold; color: #444; margin-bottom: 5px; }
-        .form-control, .form-select { border-radius: 10px; padding: 10px; border: 1px solid #ddd; font-size: 0.95rem; }
-        .btn-kirim { background: #25d366; color: white; border: none; padding: 15px; border-radius: 12px; font-weight: bold; }
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .menu-title { font-size: 1.1rem; font-weight: 800; white-space: nowrap; margin-bottom: 2px; }
+        .text-merah { color: #cc0000; }
+        .text-biru { color: #0056b3; }
+
+        .click-guide { font-size: 0.75rem; font-weight: bold; color: #666; animation: blinker 1s linear infinite; margin-top: 5px; }
+        .arrow-up-down { font-size: 1rem; animation: moveUpDown 1s ease-in-out infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+        @keyframes moveUpDown { 50% { transform: translateY(-3px); } }
+
+        /* KOTAK INFORMASI */
+        .info-box { background: white; border-radius: 20px; border-left: 5px solid #cc0000; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+        /* Form Area */
         .section-title { font-size: 0.75rem; color: #cc0000; font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 15px; margin-bottom: 10px; }
-        .info-box { background: white; border-radius: 20px; border-left: 5px solid #cc0000; }
+        .form-label { font-size: 0.85rem; font-weight: bold; color: #444; }
+        .btn-kirim { background: #25d366; color: white; border: none; padding: 15px; border-radius: 12px; font-weight: bold; font-size: 1.1rem; }
+        .btn-kembali { background: #6c757d; color: white; border: none; padding: 12px; border-radius: 12px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div class="header-box text-center">
-        <h1 class="fw-bold m-0 text-white">SOLUSI OTOMOTIF</h1>
-        <p class="lead opacity-75">Kebumen & Sekitarnya</p>
+    <div class="header-box">
+        <div class="neon-border">
+            <h1 class="header-title">SOLUSI OTOMOTIF</h1>
+        </div>
+        <p class="header-subtitle">Kebumen & Sekitarnya</p>
     </div>
 
     <div class="container mt-4 mb-5">
         <div class="row g-3" id="menu-utama">
             <div class="col-6">
-                <div class="card card-menu shadow-sm text-center p-4" onclick="bukaForm('Unit Baru Honda')">
-                    <div class="icon-circle">🏍️</div>
-                    <h6 class="fw-bold mb-0 text-danger">Unit Baru</h6>
-                    <small class="text-muted">Honda</small>
+                <div class="card card-menu card-honda text-center" onclick="bukaForm('Unit Baru Honda')">
+                    <div class="icon-circle shadow-sm">🏍️</div>
+                    <h6 class="menu-title text-merah">Unit Baru Honda</h6>
+                    <div class="arrow-up-down text-merah"><i class="bi bi-chevron-double-up"></i></div>
+                    <div class="click-guide">Klik di Sini</div>
                 </div>
             </div>
             <div class="col-6">
-                <div class="card card-menu shadow-sm text-center p-4" onclick="bukaForm('Gadai BPKB')">
-                    <div class="icon-circle">💰</div>
-                    <h6 class="fw-bold mb-0 text-primary">Gadai BPKB</h6>
-                    <small class="text-muted">Multiguna</small>
+                <div class="card card-menu card-bpkb text-center" onclick="bukaForm('Gadai BPKB')">
+                    <div class="icon-circle shadow-sm">💰</div>
+                    <h6 class="menu-title text-biru">Gadai BPKB</h6>
+                    <div class="arrow-up-down text-biru"><i class="bi bi-chevron-double-up"></i></div>
+                    <div class="click-guide">Klik di Sini</div>
                 </div>
             </div>
 
             <div class="col-12 mt-4">
-                <div class="info-box shadow-sm p-4">
+                <div class="info-box p-4">
                     <h6 class="fw-bold mb-3">Kenapa Memilih Kami?</h6>
                     <ul class="small text-muted ps-3 mb-0">
                         <li class="mb-2">Proses cepat, mudah, dan transparan.</li>
@@ -68,74 +150,37 @@
                     <h4 class="fw-bold mb-3" id="judul-form" style="color: #cc0000;">Form Pengajuan</h4>
                     
                     <div class="section-title">Informasi Pribadi</div>
-                    <div class="mb-3">
-                        <label class="form-label">Nama Lengkap</label>
-                        <input type="text" id="nama" class="form-control" placeholder="Nama Lengkap Sesuai KTP">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Pekerjaan</label>
-                        <input type="text" id="pekerjaan" class="form-control" placeholder="Pekerjaan saat ini">
-                    </div>
+                    <div class="mb-3"><label class="form-label">Nama Lengkap</label><input type="text" id="nama" class="form-control" placeholder="Nama Sesuai KTP"></div>
+                    <div class="mb-3"><label class="form-label">Pekerjaan</label><input type="text" id="pekerjaan" class="form-control" placeholder="Pekerjaan saat ini"></div>
 
                     <div class="section-title">Domisili Lengkap</div>
                     <div class="row">
-                        <div class="col-6 mb-3">
-                            <label class="form-label">RT</label>
-                            <input type="text" id="rt" class="form-control" placeholder="000">
-                        </div>
-                        <div class="col-6 mb-3">
-                            <label class="form-label">RW</label>
-                            <input type="text" id="rw" class="form-control" placeholder="000">
-                        </div>
+                        <div class="col-6 mb-3"><label class="form-label">RT</label><input type="text" id="rt" class="form-control" placeholder="000"></div>
+                        <div class="col-6 mb-3"><label class="form-label">RW</label><input type="text" id="rw" class="form-control" placeholder="000"></div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Desa / Kelurahan</label>
-                        <input type="text" id="desa" class="form-control" placeholder="Nama Desa">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Kecamatan</label>
-                        <input type="text" id="kecamatan" class="form-control" placeholder="Kecamatan">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Kabupaten</label>
-                        <input type="text" id="kabupaten" class="form-control" value="Kebumen">
-                    </div>
+                    <div class="mb-3"><label class="form-label">Desa / Kelurahan</label><input type="text" id="desa" class="form-control" placeholder="Nama Desa"></div>
+                    <div class="mb-3"><label class="form-label">Kecamatan</label><input type="text" id="kecamatan" class="form-control" placeholder="Kecamatan"></div>
+                    <div class="mb-3"><label class="form-label">Kabupaten</label><input type="text" id="kabupaten" class="form-control" value="Kebumen"></div>
 
                     <div class="section-title">Data Kendaraan</div>
-                    
                     <div id="form-unit-baru">
-                        <div class="mb-3">
-                            <label class="form-label">Type Motor Honda</label>
-                            <input type="text" id="unit_tipe" class="form-control" placeholder="Misal: Scoopy, Beat, Vario">
-                        </div>
-                        <div class="mb-4">
-                            <label class="form-label">Warna</label>
-                            <input type="text" id="unit_warna" class="form-control" placeholder="Pilihan Warna">
-                        </div>
+                        <div class="mb-3"><label class="form-label">Type Motor Honda</label><input type="text" id="unit_tipe" class="form-control" placeholder="Misal: Scoopy, Beat"></div>
+                        <div class="mb-4"><label class="form-label">Warna</label><input type="text" id="unit_warna" class="form-control" placeholder="Pilihan Warna"></div>
                     </div>
-
                     <div id="form-gadai" class="d-none">
-                        <div class="mb-3">
-                            <label class="form-label">Merk & Type Kendaraan</label>
-                            <input type="text" id="gadai_tipe" class="form-control" placeholder="Contoh: Honda Beat CBS / Toyota Avanza">
-                        </div>
+                        <div class="mb-3"><label class="form-label">Merk & Type Kendaraan</label><input type="text" id="gadai_tipe" class="form-control" placeholder="Contoh: Beat CBS / Toyota Avanza"></div>
+                   <div class="mb-3">
+                   <label class="form-label">Plat Nomor Kendaraan</label>
+                   <input type="text" id="gadai_plat" class="form-control" placeholder="Contoh: AA 1234 XX">
+    </div>
                         <div class="row">
-                            <div class="col-6 mb-3">
-                                <label class="form-label">Tahun</label>
-                                <input type="number" id="gadai_tahun" class="form-control" placeholder="2014">
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label class="form-label">Pajak</label>
-                                <select id="gadai_pajak" class="form-select">
-                                    <option value="Jalan">Hidup / Jalan</option>
-                                    <option value="Mati">Mati</option>
-                                </select>
-                            </div>
+                            <div class="col-6 mb-3"><label class="form-label">Tahun</label><input type="number" id="gadai_tahun" class="form-control" placeholder="2014"></div>
+                            <div class="col-6 mb-3"><label class="form-label">Pajak</label><select id="gadai_pajak" class="form-select"><option value="Jalan">Hidup / Mati</option><option value="Mati">Mati</option></select></div>
                         </div>
                     </div>
 
                     <button class="btn btn-kirim w-100 mb-3" onclick="kirimWA()">Kirim Data ke WhatsApp ➜</button>
-                    <button class="btn btn-light btn-sm w-100 text-muted" onclick="kembaliKeMenu()">✖ Kembali</button>
+                    <button class="btn btn-kembali w-100" onclick="kembaliKeMenu()"><i class="bi bi-arrow-left-circle"></i> Kembali ke Menu Utama</button>
                 </div>
             </div>
         </div>
@@ -143,60 +188,39 @@
 
     <script>
         let jenisLayanan = "";
-
         function bukaForm(layanan) {
             jenisLayanan = layanan;
             document.getElementById('menu-utama').classList.add('d-none');
             document.getElementById('area-form').classList.remove('d-none');
-            document.getElementById('judul-form').innerText = "Form " + layanan;
-
             if(layanan === 'Unit Baru Honda') {
+                document.getElementById('judul-form').innerText = "Form Pengajuan Unit Baru Honda";
                 document.getElementById('form-unit-baru').classList.remove('d-none');
                 document.getElementById('form-gadai').classList.add('d-none');
             } else {
+                document.getElementById('judul-form').innerText = "Form Pengajuan Gadai BPKB";
                 document.getElementById('form-unit-baru').classList.add('d-none');
                 document.getElementById('form-gadai').classList.remove('d-none');
             }
             window.scrollTo(0,0);
         }
-
         function kembaliKeMenu() {
             document.getElementById('menu-utama').classList.remove('d-none');
             document.getElementById('area-form').classList.add('d-none');
         }
-
         function kirimWA() {
             const nama = document.getElementById('nama').value;
-            const kerja = document.getElementById('pekerjaan').value;
-            const rt = document.getElementById('rt').value;
-            const rw = document.getElementById('rw').value;
             const desa = document.getElementById('desa').value;
             const kec = document.getElementById('kecamatan').value;
-            const kab = document.getElementById('kabupaten').value;
+            if(nama === "" || desa === "" || kec === "") { alert("Mohon isi data dengan lengkap."); return; }
             
             const nomorAdmin = "6282157578668"; 
             let dataUnit = "";
-
             if(jenisLayanan === 'Unit Baru Honda') {
-                const tipe = document.getElementById('unit_tipe').value;
-                const warna = document.getElementById('unit_warna').value;
-                if(tipe === "" || warna === "") { alert("Isi tipe dan warna motor!"); return; }
-                dataUnit = `%0A*UNIT:*%0A🏍️ Type Motor Honda: ${tipe}%0A🎨 Warna: ${warna}`;
+                dataUnit = `%0A*UNIT:* ${document.getElementById('unit_tipe').value} (${document.getElementById('unit_warna').value})`;
             } else {
-                const tipeGadai = document.getElementById('gadai_tipe').value;
-                const tahunGadai = document.getElementById('gadai_tahun').value;
-                const pajakGadai = document.getElementById('gadai_pajak').value;
-                if(tipeGadai === "" || tahunGadai === "") { alert("Isi merk kendaraan dan tahun!"); return; }
-                dataUnit = `%0A*KENDARAAN JAMINAN:*%0A🚗 Merk/Type: ${tipeGadai}%0A📅 Tahun: ${tahunGadai}%0A📜 Status Pajak: ${pajakGadai}`;
+                dataUnit = `%0A*GADAI:* ${document.getElementById('gadai_tipe').value} Thn ${document.getElementById('gadai_tahun').value}`;
             }
-
-            if(nama === "" || desa === "" || kec === "") {
-                alert("Mohon isi data diri dan alamat dengan lengkap.");
-                return;
-            }
-
-            const pesan = `Halo Solusi Otomotif,%0A%0ASaya ingin mengajukan *${jenisLayanan}*%0A%0A*DATA KONSUMEN:*%0A👤 Nama Lengkap: ${nama}%0A💼 Pekerjaan: ${kerja}%0A🏠 Domisili: RT ${rt} / RW ${rw}, Desa ${desa}, Kec. ${kec}, Kab. ${kab}${dataUnit}%0A%0AMohon segera direspon.`;
-            
+            const pesan = `Halo Solusi Otomotif,%0A%0ASaya mau ajukan *${jenisLayanan}*%0A%0A*DATA:*%0A👤 ${nama}%0A🏠 Desa ${desa}, Kec. ${kec}${dataUnit}`;
             window.open(`https://wa.me/${nomorAdmin}?text=${pesan}`, '_blank');
         }
     </script>
