@@ -26,13 +26,13 @@
             overflow: hidden;
         }
 
-        /* Garis Neon Berputar CEPAT & MULUS (No Delay) */
+        /* Garis Neon Berputar CEPAT & MULUS */
         .neon-border::before {
             content: '';
             position: absolute;
             top: -50%; left: -50%; width: 200%; height: 200%;
             background: conic-gradient(transparent, transparent, transparent, #ffffff);
-            animation: rotateNeon 1.5s linear infinite; /* Dipercepat & Mulus */
+            animation: rotateNeon 1.5s linear infinite;
         }
         .neon-border::after {
             content: '';
@@ -53,13 +53,28 @@
             position: relative; z-index: 2; margin: 0;
         }
         
-        /* Subtitle Diperbesar & Digeser ke Atas */
         .header-subtitle { 
-            font-size: 1.2rem; /* Diperbesar sedikit */
-            margin-top: -5px; /* Digeser ke atas, menempel ke kotak */
+            font-size: 1.2rem; 
+            margin-top: -5px; 
             font-weight: 700; 
             color: #ffffff; 
             text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* Tombol Kembali Atas */
+        .btn-kembali-atas {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid white;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 10px;
+            display: inline-block;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
         }
 
         /* DASHBOARD MENU */
@@ -73,7 +88,6 @@
         .card-honda { border-bottom: 5px solid #cc0000; }
         .card-bpkb { border-bottom: 5px solid #0056b3; }
 
-        /* Ikon Pulse */
         .icon-circle { 
             width: 80px; height: 80px; background: #fff5f5; border-radius: 50%; 
             font-size: 40px; display: flex; align-items: center; justify-content: center;
@@ -110,6 +124,11 @@
             <h1 class="header-title">SOLUSI OTOMOTIF</h1>
         </div>
         <p class="header-subtitle">Kebumen & Sekitarnya</p>
+        <div id="btn-atas" class="d-none">
+            <div class="btn-kembali-atas" onclick="kembaliKeMenu()">
+                <i class="bi bi-arrow-left"></i> Kembali ke Menu Utama
+            </div>
+        </div>
     </div>
 
     <div class="container mt-4 mb-5">
@@ -178,7 +197,8 @@
                             <div class="col-6 mb-3">
                                 <label class="form-label">Pajak</label>
                                 <select id="gadai_pajak" class="form-select">
-                                    <option value="Hidup / Mati">Hidup / Mati</option>
+                                    <option value="Hidup">Hidup</option>
+                                    <option value="Mati">Mati</option>
                                 </select>
                             </div>
                         </div>
@@ -193,10 +213,14 @@
 
     <script>
         let jenisLayanan = "";
+
+        // Fungsi saat buka form
         function bukaForm(layanan) {
             jenisLayanan = layanan;
             document.getElementById('menu-utama').classList.add('d-none');
             document.getElementById('area-form').classList.remove('d-none');
+            document.getElementById('btn-atas').classList.remove('d-none');
+            
             if(layanan === 'Unit Baru Honda') {
                 document.getElementById('judul-form').innerText = "Form Pengajuan Unit Baru Honda";
                 document.getElementById('form-unit-baru').classList.remove('d-none');
@@ -206,12 +230,32 @@
                 document.getElementById('form-unit-baru').classList.add('d-none');
                 document.getElementById('form-gadai').classList.remove('d-none');
             }
+            
+            // Tambahkan history baru agar tombol back HP tidak menutup aplikasi
+            history.pushState({page: "form"}, "Form", "#form");
             window.scrollTo(0,0);
         }
+
+        // Fungsi saat kembali ke menu utama
         function kembaliKeMenu() {
             document.getElementById('menu-utama').classList.remove('d-none');
             document.getElementById('area-form').classList.add('d-none');
+            document.getElementById('btn-atas').classList.add('d-none');
+            
+            // Jika user klik tombol kembali manual, bersihkan history
+            if(window.location.hash === "#form") {
+                history.back();
+            }
         }
+
+        // Deteksi tombol BACK pada Handphone
+        window.onpopstate = function(event) {
+            // Jika user menekan tombol back HP dan form sedang terbuka, maka tutup form saja
+            document.getElementById('menu-utama').classList.remove('d-none');
+            document.getElementById('area-form').classList.add('d-none');
+            document.getElementById('btn-atas').classList.add('d-none');
+        };
+
         function kirimWA() {
             const nama = document.getElementById('nama').value;
             const desa = document.getElementById('desa').value;
