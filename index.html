@@ -164,18 +164,23 @@
 
                     <div class="section-title">Data Kendaraan</div>
                     <div id="form-unit-baru">
-                        <div class="mb-3"><label class="form-label">Type Motor Honda</label><input type="text" id="unit_tipe" class="form-control" placeholder="Misal: Scoopy, Beat"></div>
+                        <div class="mb-3"><label class="form-label">Type Motor Honda</label><input type="text" id="unit_tipe" class="form-control" placeholder="Misal: Scoopy, Beat, PCX, Vario"></div>
                         <div class="mb-4"><label class="form-label">Warna</label><input type="text" id="unit_warna" class="form-control" placeholder="Pilihan Warna"></div>
                     </div>
                     <div id="form-gadai" class="d-none">
                         <div class="mb-3"><label class="form-label">Merk & Type Kendaraan</label><input type="text" id="gadai_tipe" class="form-control" placeholder="Contoh: Beat CBS / Toyota Avanza"></div>
-                   <div class="mb-3">
-                   <label class="form-label">Plat Nomor Kendaraan</label>
-                   <input type="text" id="gadai_plat" class="form-control" placeholder="Contoh: AA 1234 XX">
-    </div>
+                        <div class="mb-3">
+                            <label class="form-label">Plat Nomor Kendaraan</label>
+                            <input type="text" id="gadai_plat" class="form-control" placeholder="Contoh: AA 1234 XX">
+                        </div>
                         <div class="row">
                             <div class="col-6 mb-3"><label class="form-label">Tahun</label><input type="number" id="gadai_tahun" class="form-control" placeholder="2014"></div>
-                            <div class="col-6 mb-3"><label class="form-label">Pajak</label><select id="gadai_pajak" class="form-select"><option value="Jalan">Hidup</option><option value="Mati">Mati</option></select></div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Pajak</label>
+                                <select id="gadai_pajak" class="form-select">
+                                    <option value="Hidup / Mati">Hidup / Mati</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
@@ -218,7 +223,12 @@
             if(jenisLayanan === 'Unit Baru Honda') {
                 dataUnit = `%0A*UNIT:* ${document.getElementById('unit_tipe').value} (${document.getElementById('unit_warna').value})`;
             } else {
-                dataUnit = `%0A*GADAI:* ${document.getElementById('gadai_tipe').value} Thn ${document.getElementById('gadai_tahun').value}`;
+                const tipeGadai = document.getElementById('gadai_tipe').value;
+                const platGadai = document.getElementById('gadai_plat').value;
+                const tahunGadai = document.getElementById('gadai_tahun').value;
+                const pajakGadai = document.getElementById('gadai_pajak').value;
+                
+                dataUnit = `%0A*GADAI:* ${tipeGadai}%0A*PLAT:* ${platGadai}%0A*THN:* ${tahunGadai}%0A*PAJAK:* ${pajakGadai}`;
             }
             const pesan = `Halo Solusi Otomotif,%0A%0ASaya mau ajukan *${jenisLayanan}*%0A%0A*DATA:*%0A👤 ${nama}%0A🏠 Desa ${desa}, Kec. ${kec}${dataUnit}`;
             window.open(`https://wa.me/${nomorAdmin}?text=${pesan}`, '_blank');
